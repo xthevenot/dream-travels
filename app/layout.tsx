@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { useReducer } from "react";
+import { TripsProvider } from "../lib/trips-context";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,12 +20,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
         className={`${inter.variable}`}
       >
-        {children}
+        <TripsProvider>
+          {children}
+        </TripsProvider>
+
       </body>
     </html>
   );

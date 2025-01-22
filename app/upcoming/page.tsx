@@ -1,4 +1,4 @@
-import TripsView from "@/components/trips-view";
+import TripsView from "@/components/trips/trips-view";
 
 export default function Home() {
   return (

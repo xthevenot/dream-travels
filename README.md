@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# dream-travels
+Technical test for Exoticca (only for this purpose)
+=======
+This project is build over [React.js](https://react.dev/) using [Next.js](https://nextjs.org/) and [PostGres](https://www.postgresql.org/)
 
-## Getting Started
 
-First, run the development server:
+## Install dependencies, build the project and run it
+
+Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+```
+
+Then, build an optimized version:
+
+```bash
+npm run build
+```
+
+Finally, run the server:
+
+```bash
+npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing the UI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Unit testing with Jest
 
-## Learn More
+We are using [Testing-library](https://testing-library.com/) and [Jest](https://jestjs.io/) to test the UI
 
-To learn more about Next.js, take a look at the following resources:
+You can now run tests
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+#run unit tests
+npm run test
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployed version
 
-## Deploy on Vercel
+The app has been deployed in my personal account
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[Deployed version](https://dream-travels-hazel.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technical test coverage
+All the test objectives have been done:
+* Initial view with default list retrieved from remote endpoint (and then used in cache)
+* Filter by any trip properties
+* Detailed view, create and edit form
+* Delete trip option
+* A trip can be marked as completed or upcoming
+* Bidirectional navigation netween completed and upcoming
+* Completed view
+* A completed trip can be set as upcoming
+* The application can be used in any device (also responsive)
+* All the components have their related test file (unit tests)
+
+*Extra ball*
+
+* A button has been added on the top of the application, select a random trip and set it as "automatic upcoming". Then a countdown is displayed with 3 months. Each time you reload the browser, the information is kept in cookie.
+* The button is not clickable once a random trip has been selected
+
+## Incoming improvements
+All the project has been done in the given deadline. Some technical points should be improved in a (eventual) second round:
+* Image optimization
+* Pass the count down as a context provider, to display the information in related trip card
+* Add integration tests with Cypress
+* Add form validation data
+* Improve some graphical elements
+* Add a confirmation popup when deleting a trip
+
+## Authors
+
+- [@xthevenot](https://github.com/xthevenot)
+
+> [!IMPORTANT]  
+> All the **Exoticca** branding elements are trade marked. Use only for the purpose of technical testing.

@@ -1,24 +1,18 @@
 'use client'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { useState } from 'react'
 
-function Search({ placeholder }: { placeholder: string }) {
-  const [searchInput, setSearchInput] = useState('');
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+function Search({
+  placeholder,
+  handleSearchUpdate
+}: {
+  placeholder: string,
+  handleSearchUpdate: Function
+}) {
+  const [searchInput, setSearchInput] = useState<String>();
 
-  const handleSearch = (term: string) => {
-    setSearchInput(term);
-  }
   const handleClickSearch = () => {
-    const params = new URLSearchParams(searchParams);
-    if (searchInput) {
-      params.set('query', searchInput);
-    } else {
-      params.delete('query');
-    }
-    replace(`${pathname}?${params.toString()}`);
+    handleSearchUpdate(searchInput)
+
   };
   return (
     <section className="text-center p-8">
@@ -29,14 +23,14 @@ function Search({ placeholder }: { placeholder: string }) {
           type="text"
           placeholder={placeholder}
           onChange={(e) => {
-            handleSearch(e.target.value);
+            setSearchInput(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               handleClickSearch();
             }
           }}
-          className="flex-grow p-2 rounded-3xl"
+          className="flex-grow p-2 rounded-3xl focus:outline-none focus:border-none"
         />
         <button className="bg-black text-white px-4 py-2 rounded-3xl"
           onClick={(e) => {
